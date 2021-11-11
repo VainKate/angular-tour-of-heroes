@@ -1,0 +1,16 @@
+<h2>My Heroes</h2>
+<ul class="heroes">
+  <li *ngFor="let hero of heroes" (click)="onSelect(hero)" [class.heroes--selected]="hero === selectedHero">
+    <span class="badge">{{hero.id}}</span> {{hero.name}}
+  </li>
+</ul>
+
+<div *ngIf="selectedHero">
+  <h2>{{selectedHero.name | uppercase}} Details</h2>
+  <div><span>id:</span>{{selectedHero.id}}</div>
+  <div>
+    <label for="hero-name">Hero name:</label>
+    <!-- [(ngModule)] is an angular's two way data binding directive. It requires to import Angular's FormsModule in the AppModule -->
+    <input type="text" id="hero-name" placeholder="name" [(ngModel)]="selectedHero.name">
+  </div>
+</div>
